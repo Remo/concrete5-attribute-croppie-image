@@ -14,9 +14,12 @@
     </div>
 
     <div class="actions">
-        <a class="btn btn-primary file-btn">
+        <a class="btn btn-primary file-btn uploadAvatarButtonWrapper">
             <span><?= t('Upload Avatar') ?></span>
             <input type="file" id="upload" class="uploadAvatarButton" value="Choose a file" accept="image/*"/>
+        </a>
+        <a class="btn btn-primary applyAvatar hidden">
+            <span><?= t('Apply Avatar') ?></span>
         </a>
     </div>
 

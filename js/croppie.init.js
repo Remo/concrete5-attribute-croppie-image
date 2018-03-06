@@ -24,6 +24,20 @@ $(document).ready(function () {
       });
     });
 
+    $wrap.find('.applyAvatar').on('click', function (event) {
+      event.preventDefault();
+
+      $uploadCrop.croppie('result', 'base64').then(function (base64) {
+        $wrap.find('.attribute-croppie-image').addClass('hidden');
+        $wrap.find('.changeAvatarWrapper').removeClass('hidden');
+        $wrap.find('.uploadAvatar').addClass('hidden');
+        $wrap.find('.applyAvatar').addClass('hidden');
+        $wrap.find('.uploadAvatarButtonWrapper').removeClass('hidden');
+
+        $wrap.find('.changeAvatarWrapper img').attr('src', base64);
+      });
+    });
+
     $wrap.find('.uploadAvatarButton').on('change', function () {
       var input = this;
       if (input.files && input.files[0]) {
@@ -33,6 +47,8 @@ $(document).ready(function () {
           $wrap.find('.attribute-croppie-image').removeClass('hidden');
           $wrap.find('.changeAvatarWrapper').addClass('hidden');
           $wrap.find('.uploadAvatar').removeClass('hidden');
+          $wrap.find('.applyAvatar').removeClass('hidden');
+          $wrap.find('.uploadAvatarButtonWrapper').addClass('hidden');
 
           $uploadCrop.croppie('bind', {
             url: e.target.result
@@ -48,7 +64,5 @@ $(document).ready(function () {
         alert("Sorry - you're browser doesn't support the FileReader API");
       }
     });
-
-
   });
 });
