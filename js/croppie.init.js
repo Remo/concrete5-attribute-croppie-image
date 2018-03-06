@@ -55,13 +55,11 @@ $(document).ready(function () {
           }).then(function () {
 
           });
-
-          $wrap.find('.originalFileName').val(e.target.result);
         };
         reader.readAsDataURL(input.files[0]);
       }
       else {
-        alert("Sorry - you're browser doesn't support the FileReader API");
+        alert('Sorry - you\'re browser doesn\'t support the FileReader API');
       }
     });
   });

@@ -100,12 +100,6 @@ class Controller extends AttributeTypeController
         $this->requireAsset('croppie');
         $values = $this->getValues();
         $this->set('values', $values);
-
-        if ($values['fileName'] && $values['fileSettings']) {
-            $bindOptions = json_decode($values['fileSettings'], true);
-            $bindOptions['url'] = BASE_URL . '/application/files/avatars/' . $values['fileName'];
-            $this->set('bindOptions', $bindOptions);
-        }
     }
 
     /**
@@ -141,21 +135,6 @@ class Controller extends AttributeTypeController
 
             $args['fileNameThumbnail'] = $fileName . '.png';
         }
-
-        // save original file
-        if (isset($data['fileName']) && !empty($data['fileName'])) {
-            $fileName = uniqid('avatar');
-            $thumbnailFileName = DIR_BASE . '/application/files/avatars/' . $fileName . '.png';
-
-            $fileData = explode(',', $data['fileName']);
-
-            $ifp = fopen($thumbnailFileName, 'wb');
-            fwrite($ifp, base64_decode($fileData[1]));
-            fclose($ifp);
-
-            $args['fileName'] = $fileName . '.png';
-        }
-
 
         $db = Database::connection();
         $db->Replace('atCroppieImage', $args, 'avID', true);

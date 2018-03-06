@@ -5,7 +5,6 @@
             <key/>
             <default value="0"/>
         </field>
-        <field name="fileName" type="C" size="255"></field>
         <field name="fileNameThumbnail" type="C" size="255"></field>
         <field name="fileSettings" type="C" size="255"></field>
     </table>

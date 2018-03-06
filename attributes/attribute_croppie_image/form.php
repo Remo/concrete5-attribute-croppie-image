@@ -23,7 +23,6 @@
         </a>
     </div>
 
-    <input type="hidden" name="<?= $this->field('fileName') ?>" class="originalFileName">
     <input type="hidden" name="<?= $this->field('fileNameThumbnail') ?>" class="fileNameThumbnail">
     <input type="hidden" name="<?= $this->field('fileSettings') ?>" class="fileSettings">
 </div>
