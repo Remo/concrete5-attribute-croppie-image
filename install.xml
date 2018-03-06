@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<concrete5-cif version="1.0">
+    <attributetypes>
+        <attributetype handle="attribute_croppie_image" package="attribute_croppie_image">
+            <categories>
+                <category handle="user"/>
+                <category handle="collection"/>
+            </categories>
+        </attributetype>
+    </attributetypes>
+</concrete5-cif>
