@@ -5,20 +5,20 @@ $(document).ready(function () {
 
     $uploadCrop = $container.croppie({
       viewport: {
-        width: 200,
-        height: 200,
+        width: $wrap.data('viewport-width'),
+        height: $wrap.data('viewport-height'),
         type: 'square'
       },
       boundary: {
-        width: 300,
-        height: 300
+        width: $wrap.data('boundary-width'),
+        height: $wrap.data('boundary-height')
       },
       showZoomer: true,
       enableResize: false
     });
 
     $uploadCrop.on('update.croppie', function (ev, cropData) {
-      $wrap.find('.settings').val(JSON.stringify(cropData));
+      $wrap.find('.fileSettings').val(JSON.stringify(cropData));
       $uploadCrop.croppie('result', 'base64').then(function (base64) {
         $wrap.find('.fileNameThumbnail').val(base64);
       });

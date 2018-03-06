@@ -1,4 +1,8 @@
-<div class="attribute-croppie-image-wrap">
+<div class="attribute-croppie-image-wrap"
+     data-viewport-width="<?= $viewportWidth ?>"
+     data-viewport-height="<?= $viewportHeight ?>"
+     data-boundary-width="<?= $boundaryWidth ?>"
+     data-boundary-height="<?= $boundaryHeight ?>">
     <?php if (isset($values['fileNameThumbnail'])) { ?>
         <div class="changeAvatarWrapper">
             <img src="<?= BASE_URL ?>/application/files/avatars/<?= $values['fileNameThumbnail'] ?>">
@@ -18,5 +22,5 @@
 
     <input type="hidden" name="<?= $this->field('fileName') ?>" class="originalFileName">
     <input type="hidden" name="<?= $this->field('fileNameThumbnail') ?>" class="fileNameThumbnail">
-    <input type="hidden" name="<?= $this->field('settings') ?>" class="settings">
+    <input type="hidden" name="<?= $this->field('fileSettings') ?>" class="fileSettings">
 </div>

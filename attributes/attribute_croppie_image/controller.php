@@ -52,11 +52,25 @@ class Controller extends AttributeTypeController
         return false;
     }
 
+    public function load()
+    {
+        $ak = $this->getAttributeKey();
+        $db = Database::connection();
+        if (is_object($ak)) {
+            $row = $db->GetRow('SELECT * FROM atCroppieImageSettings WHERE akID = ?', array($ak->getAttributeKeyID()));
+            $this->set('viewportWidth', $row['viewportWidth'] ?: 200);
+            $this->set('viewportHeight', $row['viewportHeight'] ?: 200);
+            $this->set('boundaryWidth', $row['boundaryWidth'] ?: 300);
+            $this->set('boundaryHeight', $row['boundaryHeight'] ?: 300);
+        }
+    }
+
     /**
      * Shows the attribute configuration form
      */
     public function type_form()
     {
+        $this->load();
     }
 
     /**
@@ -65,6 +79,15 @@ class Controller extends AttributeTypeController
      */
     public function saveKey($data)
     {
+        $ak = $this->getAttributeKey();
+        $db = Database::connection();
+        $db->Replace('atCroppieImageSettings', [
+            'akID' => $ak->getAttributeKeyID(),
+            'viewportWidth' => $data['viewportWidth'],
+            'viewportHeight' => $data['viewportHeight'],
+            'boundaryWidth' => $data['boundaryWidth'],
+            'boundaryHeight' => $data['boundaryHeight'],
+        ], ['akID'], true);
     }
 
     /**
@@ -72,12 +95,14 @@ class Controller extends AttributeTypeController
      */
     public function form()
     {
+        $this->load();
+
         $this->requireAsset('croppie');
         $values = $this->getValues();
         $this->set('values', $values);
 
-        if ($values['fileName'] && $values['settings']) {
-            $bindOptions = json_decode($values['settings'], true);
+        if ($values['fileName'] && $values['fileSettings']) {
+            $bindOptions = json_decode($values['fileSettings'], true);
             $bindOptions['url'] = BASE_URL . '/application/files/avatars/' . $values['fileName'];
             $this->set('bindOptions', $bindOptions);
         }
@@ -100,7 +125,7 @@ class Controller extends AttributeTypeController
     {
         $args = [
             'avID' => $this->getAttributeValueID(),
-            'settings' => $data['settings'],
+            'fileSettings' => $data['fileSettings'],
         ];
 
         // save thumbnail if there's one

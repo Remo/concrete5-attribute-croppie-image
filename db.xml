@@ -7,6 +7,17 @@
         </field>
         <field name="fileName" type="C" size="255"></field>
         <field name="fileNameThumbnail" type="C" size="255"></field>
-        <field name="setttings" type="X2"></field>
+        <field name="fileSettings" type="C" size="255"></field>
+    </table>
+    <table name="atCroppieImageSettings">
+        <field name="akID" type="I">
+            <key/>
+            <default value="0"/>
+            <unsigned/>
+        </field>
+        <field name="viewportWidth" type="I" size="11"></field>
+        <field name="viewportHeight" type="I" size="11"></field>
+        <field name="boundaryWidth" type="I" size="11"></field>
+        <field name="boundaryHeight" type="I" size="11"></field>
     </table>
 </schema>
