@@ -34,7 +34,7 @@ class Controller extends AttributeTypeController
         $values = $this->getValues();
 
         if ($values) {
-            return DIR_REL . '/application/files/avatars/' . $values['fileName'];
+            return DIR_REL . '/application/files/avatars/' . $values['fileNameThumbnail'];
         }
     }
 
