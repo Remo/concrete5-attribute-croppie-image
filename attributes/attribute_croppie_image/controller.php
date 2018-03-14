@@ -126,17 +126,22 @@ class Controller extends AttributeTypeController
         ];
 
         // save thumbnail if there's one
-        if (isset($data['fileNameThumbnail']) && !empty($data['fileNameThumbnail'])) {
-            $fileName = uniqid('avatar_thumbnail');
-            $thumbnailFileName = DIR_BASE . '/application/files/avatars/' . $fileName . '.png';
+        if (isset($data['fileNameThumbnail'])) {
+            if (!empty($data['fileNameThumbnail'])) {
+                $fileName = uniqid('avatar_thumbnail');
+                $thumbnailFileName = DIR_BASE . '/application/files/avatars/' . $fileName . '.png';
 
-            $fileData = explode(',', $data['fileNameThumbnail']);
+                $fileData = explode(',', $data['fileNameThumbnail']);
 
-            $ifp = fopen($thumbnailFileName, 'wb');
-            fwrite($ifp, base64_decode($fileData[1]));
-            fclose($ifp);
+                $ifp = fopen($thumbnailFileName, 'wb');
+                fwrite($ifp, base64_decode($fileData[1]));
+                fclose($ifp);
 
-            $args['fileNameThumbnail'] = $fileName . '.png';
+                $args['fileNameThumbnail'] = $fileName . '.png';
+            }
+            else {
+                $args['fileNameThumbnail'] = '';
+            }
         }
 
         $db = Database::connection();

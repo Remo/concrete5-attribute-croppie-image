@@ -44,7 +44,7 @@ $(document).ready(function () {
 
       $wrap.find('.deleteAvatar').addClass('hidden');
       $wrap.find('.changeAvatarWrapper img').attr('src', 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7');
-      $wrap.find('.fileNameThumbnail').val();
+      $wrap.find('.fileNameThumbnail').val('');
     });
 
     $wrap.find('.uploadAvatarButton').on('change', function () {
