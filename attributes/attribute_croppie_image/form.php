@@ -4,7 +4,7 @@
      data-boundary-width="<?= $boundaryWidth ?>"
      data-boundary-height="<?= $boundaryHeight ?>">
     <div class="changeAvatarWrapper">
-        <?php if (isset($values['fileNameThumbnail'])) { ?>
+        <?php if (isset($values['fileNameThumbnail']) && !empty($values['fileNameThumbnail'])) { ?>
             <img src="<?= BASE_URL ?>/application/files/avatars/<?= $values['fileNameThumbnail'] ?>">
         <?php } else { ?>
             <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
@@ -21,7 +21,7 @@
             <input type="file" id="upload" class="uploadAvatarButton" value="Choose a file" accept="image/*"/>
         </a>
         <?php if ($showDeleteButton) { ?>
-            <a class="btn btn-primary deleteAvatar <?php if (!isset($values['fileNameThumbnail'])) { ?>hidden<?php } ?>">
+            <a class="btn btn-primary deleteAvatar <?php if (!isset($values['fileNameThumbnail']) || empty($values['fileNameThumbnail'])) { ?>hidden<?php } ?>">
                 <span><?= t('Delete Avatar') ?></span>
             </a>
         <?php } ?>
