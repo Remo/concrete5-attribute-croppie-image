@@ -2,6 +2,7 @@
 
 namespace Concrete\Package\AttributeCroppieImage\Attribute\AttributeCroppieImage;
 
+use Concrete\Core\Attribute\FontAwesomeIconFormatter;
 use Database;
 use Concrete\Core\Attribute\Controller as AttributeTypeController;
 
@@ -14,9 +15,9 @@ class Controller extends AttributeTypeController
         'options' => array('default' => null, 'notnull' => false),
     ];
 
-    public function deleteKey()
+    public function getIconFormatter()
     {
-        $db = Database::connection();
+        return new FontAwesomeIconFormatter('user-secret');
     }
 
     public function deleteValue()
@@ -62,6 +63,7 @@ class Controller extends AttributeTypeController
             $this->set('viewportHeight', $row['viewportHeight'] ?: 200);
             $this->set('boundaryWidth', $row['boundaryWidth'] ?: 300);
             $this->set('boundaryHeight', $row['boundaryHeight'] ?: 300);
+            $this->set('showDeleteButton', $row['showDeleteButton'] ?: 0);
         }
     }
 
@@ -87,6 +89,7 @@ class Controller extends AttributeTypeController
             'viewportHeight' => $data['viewportHeight'],
             'boundaryWidth' => $data['boundaryWidth'],
             'boundaryHeight' => $data['boundaryHeight'],
+            'showDeleteButton' => $data['showDeleteButton'],
         ], ['akID'], true);
     }
 

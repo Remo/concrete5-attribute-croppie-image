@@ -16,4 +16,12 @@
         <label class="control-label" for="boundaryHeight"><?= t('Boundary Height') ?></label>
         <?= $form->number('boundaryHeight', $boundaryHeight) ?>
     </div>
+    <div class="form-group">
+        <label class="control-label" for="showDeleteButton"><?= t('Show Delete Button') ?></label>
+        <div class="checkbox">
+            <label class="checkbox">
+                <?= $form->checkbox('showDeleteButton', 1, $showDeleteButton) ?>
+            </label>
+        </div>
+    </div>
 </fieldset>

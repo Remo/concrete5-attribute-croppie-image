@@ -1,22 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema version="0.3">
+<schema
+        xmlns="http://www.concrete5.org/doctrine-xml/0.5"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.concrete5.org/doctrine-xml/0.5 http://concrete5.github.io/doctrine-xml/doctrine-xml-0.5.xsd"
+>
+
     <table name="atCroppieImage">
-        <field name="avID" type="I">
+        <field name="avID" type="integer">
             <key/>
             <default value="0"/>
         </field>
-        <field name="fileNameThumbnail" type="C" size="255"></field>
-        <field name="fileSettings" type="C" size="255"></field>
+        <field name="fileNameThumbnail" type="string" size="255"/>
+        <field name="fileSettings" type="string" size="255"/>
     </table>
+
     <table name="atCroppieImageSettings">
-        <field name="akID" type="I">
+        <field name="akID" type="integer">
+            <unsigned/>
             <key/>
             <default value="0"/>
-            <unsigned/>
         </field>
-        <field name="viewportWidth" type="I" size="11"></field>
-        <field name="viewportHeight" type="I" size="11"></field>
-        <field name="boundaryWidth" type="I" size="11"></field>
-        <field name="boundaryHeight" type="I" size="11"></field>
+        <field name="viewportWidth" type="integer" size="11"/>
+        <field name="viewportHeight" type="integer" size="11"/>
+        <field name="boundaryWidth" type="integer" size="11"/>
+        <field name="boundaryHeight" type="integer" size="11"/>
+        <field name="showDeleteButton" type="boolean"/>
     </table>
+
 </schema>

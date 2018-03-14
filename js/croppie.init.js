@@ -32,10 +32,19 @@ $(document).ready(function () {
         $wrap.find('.changeAvatarWrapper').removeClass('hidden');
         $wrap.find('.uploadAvatar').addClass('hidden');
         $wrap.find('.applyAvatar').addClass('hidden');
+        $wrap.find('.deleteAvatar').removeClass('hidden');
         $wrap.find('.uploadAvatarButtonWrapper').removeClass('hidden');
 
         $wrap.find('.changeAvatarWrapper img').attr('src', base64);
       });
+    });
+
+    $wrap.find('.deleteAvatar').on('click', function (event) {
+      event.preventDefault();
+
+      $wrap.find('.deleteAvatar').addClass('hidden');
+      $wrap.find('.changeAvatarWrapper img').attr('src', 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7');
+      $wrap.find('.fileNameThumbnail').val();
     });
 
     $wrap.find('.uploadAvatarButton').on('change', function () {
