@@ -59,11 +59,11 @@ class Controller extends AttributeTypeController
         $db = Database::connection();
         if (is_object($ak)) {
             $row = $db->GetRow('SELECT * FROM atCroppieImageSettings WHERE akID = ?', array($ak->getAttributeKeyID()));
-            $this->set('viewportWidth', $row['viewportWidth'] ?: 200);
-            $this->set('viewportHeight', $row['viewportHeight'] ?: 200);
-            $this->set('boundaryWidth', $row['boundaryWidth'] ?: 300);
-            $this->set('boundaryHeight', $row['boundaryHeight'] ?: 300);
-            $this->set('showDeleteButton', $row['showDeleteButton'] ?: 0);
+            $this->set('viewportWidth', $row['viewportWidth'] ?? 200);
+            $this->set('viewportHeight', $row['viewportHeight'] ?? 200);
+            $this->set('boundaryWidth', $row['boundaryWidth'] ?? 300);
+            $this->set('boundaryHeight', $row['boundaryHeight'] ?? 300);
+            $this->set('showDeleteButton', $row['showDeleteButton'] ?? 0);
         }
     }
 
