@@ -13,7 +13,7 @@ class Controller extends Package
 {
     protected $pkgHandle = 'attribute_croppie_image';
     protected $appVersionRequired = '5.8';
-    protected $pkgVersion = '1.0.3';
+    protected $pkgVersion = '1.0.4';
 
     public function getPackageName()
     {
